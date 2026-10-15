@@ -3,37 +3,43 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Golang' });
 });
 
-/* Страница Коржика */
-router.get('/korzhik', function(req, res, next) {
-    res.render('cat', {
-        title: "Коржик",
-        picture: "images/korzhik.png",
-        desc: "Средний котёнок в семье. Очень любит футбол. Любит бегать, прыгать и веселиться. Иногда делает такие вещи, что из них приходится выбираться всей семье. Одет в форму моряка."
+/* Страница «История Go» */
+router.get('/history', function(req, res, next) {
+    res.render('topic', {
+        title: "История Go",
+        picture: "/images/history.png",
+        desc: "Язык Go был создан в Google в 2007 году Робертом Гризмером, Робом Пайком и Кеном Томпсоном. Публично представлен в 2009 году, версия 1.0 вышла в 2012. Цель — простой, быстрый и удобный язык для серверных программ."
     });
 });
 
-
-/* Страница Карамельки */
-router.get('/karamelka', function(req, res, next) {
- res.render('cat', {
-   title: 'Карамелька',
-   picture: "/images/karamelka.jpeg",
-   desc: "Cамый младший член семьи. Коронная фраза — «Я знаю, что надо делать!». Носит красный бант и красное платье."
- });
+/* Страница «Горутины» */
+router.get('/goroutines', function(req, res, next) {
+    res.render('topic', {
+        title: "Горутины",
+        picture: "/images/goroutines.png",
+        desc: "Горутины — это лёгкие потоки выполнения, которыми управляет рантайм Go. Запускаются ключевым словом go перед вызовом функции, занимают мало памяти, поэтому их можно создавать тысячами."
+    });
 });
 
-
-/* Страница Компота */
-router.get('/kompot', function(req, res, next) {
- res.render('cat', {
-   title: 'Компот',
-   picture: "/images/kompont.png",
-   desc: "Cтарший котёнок в семье. Ходит в школу. Очень любит грибы, читает про них энциклопедии. Любит игры на логику. Когда очень сильно огорчается, восклицает «Ну вот!» и начинает плакать. Обожает вкусно поесть. Носит зелёный костюм и шапку."
- });
+/* Страница «Каналы» */
+router.get('/channels', function(req, res, next) {
+    res.render('topic', {
+        title: "Каналы",
+        picture: "/images/channels.png",
+        desc: "Каналы — способ обмена данными между горутинами. Создаются через make(chan T), значения отправляются и принимаются оператором <-. Бывают буферизированными и небуферизированными."
+    });
 });
 
+/* Страница «Установка и первая программа» */
+router.get('/install', function(req, res, next) {
+    res.render('topic', {
+        title: "Установка и первая программа",
+        picture: "/images/install.png",
+        desc: "Скачайте установщик с go.dev, проверьте установку командой go version, создайте файл main.go с функцией main и запустите программу командой go run main.go."
+    });
+});
 
 module.exports = router;
