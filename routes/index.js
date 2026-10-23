@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.cookie('greeting', 'Hi!!!').render('index', { title: 'Golang' });
+  req.session.greeting = "Hi!!!";
+  res.render('index', { title: 'Golang' });
 });
 
 module.exports = router;
