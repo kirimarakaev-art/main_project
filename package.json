@@ -8,9 +8,11 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^18.0.9",
     "ejs": "~2.6.1",
     "ejs-locals": "^1.0.2",
     "express": "~4.16.1",
+    "express-session": "^1.19.0",
     "http-errors": "~1.6.3",
     "mongodb": "^7.7.0",
     "mongoose": "^9.11.3",
