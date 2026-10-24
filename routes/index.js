@@ -38,4 +38,11 @@ router.post('/logreg', async function(req, res, next) {
   }
 });
 
+/* POST logout. */
+router.post('/logout', function(req, res, next) {
+  req.session.destroy();
+  res.locals.user = null;
+  res.redirect('/');
+});
+
 module.exports = router;
