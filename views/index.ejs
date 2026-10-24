@@ -1,10 +1,38 @@
 <% layout('./layout/page.ejs') %>
-<% if (user) { %>
-<h1>Привет, <%= user.username %></h1>
-<% } else { %>
-<h1>Привет, незалогиненный пользователь</h1>
-<p>Войдите, чтобы читать темы справочника.</p>
-<% } %>
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-<p>Счетчик: <%= counter %></p>
+<section class="hero mb-5">
+  <p class="text-uppercase small fw-semibold mb-2" style="color: var(--go-accent)">
+    <i class="bi bi-braces"></i> Справочник
+  </p>
+  <h1 class="display-5 mb-3">Язык Go — коротко и по делу</h1>
+  <p class="lead col-lg-8 mb-4">
+    Как появился Go, что такое горутины и каналы, как установить язык и запустить первую программу командой <code>go run main.go</code>.
+  </p>
+  <% if (user) { %>
+  <p class="mb-0">
+    Привет, <strong><%= user.username %></strong>! Выберите тему ниже.
+  </p>
+  <% } else { %>
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <a class="btn btn-primary btn-lg" href="/logreg"><i class="bi bi-box-arrow-in-right"></i> Войти и читать</a>
+    <span class="text-body-secondary">Темы открываются после входа. Нет аккаунта — он создастся сам.</span>
+  </div>
+  <% } %>
+</section>
+
+<h2 class="h4 mb-3">Темы</h2>
+<div class="row g-3 g-lg-4 mb-4">
+  <% topics.forEach(function(topic) {
+       var style = topicStyle(topic.nick); %>
+  <div class="col-sm-6 col-lg-3">
+    <a class="topic-card d-block p-4 topic-<%= style.color %>" href="/topics/<%= topic.nick %>">
+      <span class="topic-icon mb-3"><i class="bi <%= style.icon %>"></i></span>
+      <h3 class="h5 mb-2"><%= topic.title %></h3>
+      <p class="small text-body-secondary mb-0"><%= (topic.desc || '').split('. ')[0] %>.</p>
+    </a>
+  </div>
+  <% }) %>
+</div>
+
+<p class="small text-body-secondary mb-0">
+  <i class="bi bi-eye"></i> Страниц открыто за эту сессию: <%= counter %>
+</p>

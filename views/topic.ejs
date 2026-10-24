@@ -1,4 +1,44 @@
 <% layout('./layout/page.ejs') %>
-<h1><%= title %></h1>
-<img src="<%= picture %>" alt="<%= title %>"/>
-<h4><%= desc %></h4>
+<%
+  var style = topicStyle(nick);
+  var list = (typeof nav == 'object' && nav) ? nav : [];
+  var index = list.findIndex(function(item) { return item.nick === nick; });
+  var prev = index > 0 ? list[index - 1] : null;
+  var next = index >= 0 && index < list.length - 1 ? list[index + 1] : null;
+%>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb small">
+    <li class="breadcrumb-item"><a href="/">Справочник</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= title %></li>
+  </ol>
+</nav>
+
+<article class="topic-body topic-<%= style.color %>">
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <span class="topic-icon topic-icon-lg"><i class="bi <%= style.icon %>"></i></span>
+    <h1 class="mb-0"><%= title %></h1>
+  </div>
+  <% if (picture) { %>
+  <img class="topic-picture mb-4" src="<%= picture %>" alt="<%= title %>" onerror="this.remove()"/>
+  <% } %>
+  <p class="lead"><%= desc %></p>
+</article>
+
+<hr class="my-5">
+
+<div class="d-flex justify-content-between gap-3">
+  <div>
+    <% if (prev) { %>
+    <a class="text-decoration-none" href="/topics/<%= prev.nick %>">
+      <span class="small text-body-secondary d-block">← Предыдущая</span><%= prev.title %>
+    </a>
+    <% } %>
+  </div>
+  <div class="text-end">
+    <% if (next) { %>
+    <a class="text-decoration-none" href="/topics/<%= next.nick %>">
+      <span class="small text-body-secondary d-block">Следующая →</span><%= next.title %>
+    </a>
+    <% } %>
+  </div>
+</div>

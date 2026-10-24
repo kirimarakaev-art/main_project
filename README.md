@@ -53,6 +53,7 @@ middlewares/         меню из базы, текущий пользовате
 views/               шаблоны EJS, общий layout в views/layout/page.ejs
 public/              статика: стили, картинки
 data.js, createDB.js данные тем и скрипт заполнения базы
+topicStyles.js       иконка и цвет карточки для каждой темы
 ```
 
 Файлы `testMongoose.js` и `checkUser.js` — пробные скрипты из глав 7 и 10 пособия, для работы сайта они не нужны.

@@ -1,11 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user').User;
+var Topic = require('../models/topic').Topic;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   req.session.greeting = "Hi!!!";
-  res.render('index', { title: 'Golang', counter: req.session.counter });
+  try {
+    var topics = await Topic.find({}, {_id: 0, title: 1, nick: 1, desc: 1});
+    res.render('index', { title: 'Главная', counter: req.session.counter, topics: topics });
+  } catch (err) {
+    next(err);
+  }
 });
 
 /* GET login/registration page. */

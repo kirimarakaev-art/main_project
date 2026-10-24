@@ -1,27 +1,21 @@
 <% layout('./layout/page.ejs') %>
-<div class="container">
-    <h1>Регистрация и вход</h1>
-    <p>Введите имя пользователя и пароль, если такого пользователя нет, то он будет создан.</p>
-    <form action="/logreg" method="post">
-        <div class="row mb-3">
-            <label class="col-sm-1 col-form-label">Имя</label>
-            <div class="col-sm-5">
-                <input class="form-control" type="text" placeholder="Введите имя" name="username"/>
+<div class="card auth-card shadow-sm mx-auto">
+    <div class="card-body p-4 p-md-5">
+        <h1 class="h3 mb-2">Вход и регистрация</h1>
+        <p class="text-body-secondary small mb-4">Введите имя пользователя и пароль. Если такого пользователя нет, он будет создан.</p>
+        <form action="/logreg" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="username">Имя</label>
+                <input class="form-control" type="text" id="username" placeholder="Введите имя" name="username" autocomplete="username" required/>
             </div>
-        </div>
-        <div class="row mb-3">
-            <label class="col-sm-1 col-form-label">Пароль</label>
-            <div class="col-sm-5">
-                <input class="form-control" type="password" placeholder="Введите пароль" name="password"/>
+            <div class="mb-4">
+                <label class="form-label" for="password">Пароль</label>
+                <input class="form-control" type="password" id="password" placeholder="Введите пароль" name="password" autocomplete="current-password" required/>
             </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-sm-5 offset-sm-1">
-                <input class="btn btn-primary" type="submit" value="Войти"/>
-            </div>
-        </div>
-        <% if (error) { %>
-        <div class="alert alert-danger col-sm-6"><%= error %></div>
-        <% } %>
-    </form>
+            <% if (error) { %>
+            <div class="alert alert-danger py-2"><i class="bi bi-exclamation-circle"></i> <%= error %></div>
+            <% } %>
+            <button class="btn btn-primary w-100" type="submit"><i class="bi bi-box-arrow-in-right"></i> Войти</button>
+        </form>
+    </div>
 </div>

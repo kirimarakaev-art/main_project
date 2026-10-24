@@ -1,4 +1,19 @@
 <% layout('./layout/page.ejs') %>
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<div class="text-center py-4 py-lg-5">
+  <div class="error-code mb-3"><%= status %></div>
+  <h1 class="h3 mb-3"><%= status == 404 ? (message === 'Not Found' ? 'Страница не найдена' : message) : 'Что-то пошло не так' %></h1>
+  <p class="text-body-secondary mb-4">
+    <% if (status == 404) { %>
+    Такой страницы нет. Возможно, адрес набран с ошибкой.
+    <% } else { %>
+    <%= message %>
+    <% } %>
+  </p>
+  <a class="btn btn-primary" href="/"><i class="bi bi-house"></i> На главную</a>
+</div>
+<% if (error && error.stack) { %>
+<details class="mt-4 small">
+  <summary class="text-body-secondary">Подробности для разработчика</summary>
+  <pre class="mt-2 p-3 bg-body-tertiary rounded overflow-auto"><%= error.stack %></pre>
+</details>
+<% } %>
