@@ -5,7 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/golang2026');
+var mongoUrl = process.env.MONGO_URL || 'mongodb://127.0.0.1/golang2026';
+mongoose.connect(mongoUrl);
 var session = require('express-session');
 var { MongoStore } = require('connect-mongo');
 
@@ -33,7 +34,7 @@ app.use(session({
   proxy: true,
   resave: true,
   saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1/golang2026' })
+  store: MongoStore.create({ mongoUrl: mongoUrl })
 }));
 
 app.use(function(req, res, next) {

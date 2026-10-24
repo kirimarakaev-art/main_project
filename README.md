@@ -42,6 +42,41 @@ node createDB.js
 npm start
 ```
 
+## Запуск в Docker
+
+Так проект разворачивается на VPS. Нужны только Docker и Docker Compose, Node.js и MongoDB ставить не надо: сайт и база запускаются в двух контейнерах.
+
+```bash
+git clone https://github.com/kirimarakaev-art/main_project.git
+cd main_project
+cp .env.example .env
+```
+
+В `.env` впишите свой `SESSION_SECRET` (например, `openssl rand -hex 32`). Затем соберите и запустите контейнеры:
+
+```bash
+docker compose up -d --build
+```
+
+Один раз заполните базу темами:
+
+```bash
+docker compose exec app node createDB.js
+```
+
+Сайт откроется на порту 3000: `http://<IP сервера>:3000`. Другой порт можно задать переменной `APP_PORT`, например `APP_PORT=8080 docker compose up -d`.
+
+Полезные команды:
+
+| Команда | Что делает |
+|---|---|
+| `docker compose ps` | состояние контейнеров |
+| `docker compose logs -f app` | логи сайта |
+| `git pull && docker compose up -d --build` | обновить сайт до новой версии |
+| `docker compose down` | остановить контейнеры (данные базы сохраняются) |
+
+Данные MongoDB лежат в томе `mongo-data` и переживают перезапуск и пересборку. Порт базы наружу не открыт, к ней есть доступ только у контейнера с сайтом.
+
 ## Структура проекта
 
 ```
@@ -54,6 +89,8 @@ views/               шаблоны EJS, общий layout в views/layout/page.
 public/              статика: стили, картинки
 data.js, createDB.js данные тем и скрипт заполнения базы
 topicStyles.js       иконка и цвет карточки для каждой темы
+Dockerfile           сборка образа сайта
+docker-compose.yml   сайт и MongoDB в двух контейнерах
 ```
 
 Файлы `testMongoose.js` и `checkUser.js` — пробные скрипты из глав 7 и 10 пособия, для работы сайта они не нужны.
