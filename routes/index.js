@@ -12,4 +12,12 @@ router.get('/logreg', function(req, res, next) {
   res.render('logreg', { title: 'Вход' });
 });
 
+/* POST login/registration page. */
+router.post('/logreg', function(req, res, next) {
+  var username = req.body.username
+  var password = req.body.password
+  console.log(username);
+  res.send("Сервер получил имя " + username + (password ? " и пароль" : " без пароля"));
+});
+
 module.exports = router;
