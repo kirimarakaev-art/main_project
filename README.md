@@ -86,7 +86,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 Файл `docker-compose.prod.yml` убирает публикацию порта 3000 (Docker открывает такие порты в обход файрвола), подключает сайт к общей сети Docker `web` под именем `golang-site` и ограничивает кэш MongoDB 256 МБ. Caddy узнаёт о сайте из файла вида `/opt/caddy-sites/go.caddy`:
 
 ```
-go.201-8-90-35.sslip.io {
+go.78-17-98-149.sslip.io {
 	reverse_proxy golang-site:3000
 }
 ```
