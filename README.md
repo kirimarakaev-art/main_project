@@ -75,6 +75,22 @@ docker compose exec app node createDB.js
 | `git pull && docker compose up -d --build` | обновить сайт до новой версии |
 | `docker compose down` | остановить контейнеры (данные базы сохраняются) |
 
+### На одном сервере с другими сайтами
+
+Если на сервере уже работает Caddy (например, из проекта [poker-with-friends](https://github.com/kirimarakaev-art/poker-with-friends)), сайт запускается без открытого порта и получает HTTPS через Caddy:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+```
+
+Файл `docker-compose.prod.yml` убирает публикацию порта 3000 (Docker открывает такие порты в обход файрвола), подключает сайт к общей сети Docker `web` под именем `golang-site` и ограничивает кэш MongoDB 256 МБ. Caddy узнаёт о сайте из файла вида `/opt/caddy-sites/go.caddy`:
+
+```
+go.201-8-90-35.sslip.io {
+	reverse_proxy golang-site:3000
+}
+```
+
 Данные MongoDB лежат в томе `mongo-data` и переживают перезапуск и пересборку. Порт базы наружу не открыт, к ней есть доступ только у контейнера с сайтом.
 
 ## Структура проекта

@@ -1,0 +1,19 @@
+# Запуск на сервере за общим Caddy:
+# docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+services:
+  app:
+    # Порт наружу не публикуется: Docker открывает такие порты в обход файрвола.
+    # Сайт доступен только через Caddy по имени golang-site в сети web.
+    ports: !reset []
+    networks:
+      default:
+      web:
+        aliases: [golang-site]
+
+  mongo:
+    # Кэш поменьше, чтобы на сервере с 2 ГБ памяти хватило места и другим сайтам.
+    command: ["--wiredTigerCacheSizeGB", "0.25"]
+
+networks:
+  web:
+    external: true
