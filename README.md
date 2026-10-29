@@ -1,5 +1,11 @@
 # Golang — справочник по языку Go
 
+<p align="center">
+  <a href="https://go.78-17-98-149.sslip.io">
+    <img src="https://img.shields.io/badge/%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C%20%D1%81%D0%B0%D0%B9%D1%82-go.78--17--98--149.sslip.io-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Открыть сайт">
+  </a>
+</p>
+
 Учебный веб-проект на Node.js: небольшой справочник по Go с темами из базы данных, сессиями и регистрацией пользователей. Сделан по учебному пособию «Программирование: учебный проект на JavaScript» (Москалева Ю.П., 2024), но на собственную тему.
 
 ## Возможности
@@ -75,15 +81,15 @@ docker compose exec app node createDB.js
 | `git pull && docker compose up -d --build` | обновить сайт до новой версии |
 | `docker compose down` | остановить контейнеры (данные базы сохраняются) |
 
-### На одном сервере с другими сайтами
+### С HTTPS через Caddy
 
-Если на сервере уже работает Caddy (например, из проекта [poker-with-friends](https://github.com/kirimarakaev-art/poker-with-friends)), сайт запускается без открытого порта и получает HTTPS через Caddy:
+Если на сервере работает Caddy, сайт запускается без открытого порта и получает HTTPS через него:
 
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 ```
 
-Файл `docker-compose.prod.yml` убирает публикацию порта 3000 (Docker открывает такие порты в обход файрвола), подключает сайт к общей сети Docker `web` под именем `golang-site` и ограничивает кэш MongoDB 256 МБ. Caddy узнаёт о сайте из файла вида `/opt/caddy-sites/go.caddy`:
+Файл `docker-compose.prod.yml` убирает публикацию порта 3000 (Docker открывает такие порты в обход файрвола), подключает сайт к сети Docker `web` под именем `golang-site` и ограничивает кэш MongoDB 256 МБ. Caddy узнаёт о сайте из файла вида `/opt/caddy-sites/go.caddy`:
 
 ```
 go.78-17-98-149.sslip.io {
