@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="150" viewBox="0 0 560 150">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#0089AB"/><stop offset="1" stop-color="#005A73"/></linearGradient></defs>
+  <rect x="10" y="35" width="540" height="96" rx="48" fill="#003B4C"/>
+  <rect x="10" y="25" width="540" height="96" rx="48" fill="url(#g)"/>
+  <g transform="translate(78 78)">
+    <animateTransform attributeName="transform" type="translate" values="78 78;78 72;78 78" dur="1.6s" repeatCount="indefinite"/>
+    <ellipse cx="-30" cy="-38" rx="9" ry="8" fill="#6AD7E5" stroke="#000" stroke-width="2"/>
+    <ellipse cx="30" cy="-38" rx="9" ry="8" fill="#6AD7E5" stroke="#000" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="40" ry="44" fill="#6AD7E5" stroke="#000" stroke-width="2.5"/>
+    <circle cx="-15" cy="-14" r="13" fill="#fff" stroke="#000" stroke-width="2"/>
+    <circle cx="15" cy="-14" r="13" fill="#fff" stroke="#000" stroke-width="2"/>
+    <circle cx="-11" cy="-12" r="5" fill="#000"/><circle cx="19" cy="-12" r="5" fill="#000"/>
+    <ellipse cx="0" cy="4" rx="9" ry="6" fill="#F6D2A2" stroke="#000" stroke-width="1.5"/>
+    <ellipse cx="0" cy="0" rx="4" ry="3" fill="#000"/>
+    <rect x="-4" y="9" width="8" height="7" fill="#fff" stroke="#000" stroke-width="1"/>
+  </g>
+  <g font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="146" y="70" font-size="30" font-weight="800" fill="#fff">Открыть справочник</text>
+    <text x="147" y="98" font-size="17" fill="#fff" fill-opacity="0.9">go.78-17-98-149.sslip.io</text>
+  </g>
+  <circle cx="496" cy="73" r="26" fill="#fff"/>
+  <path d="M484 73 h22 M497 63 l10 10 l-10 10" stroke="#006E8A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <animateTransform attributeName="transform" type="translate" values="-2 0;3 0;-2 0" dur="1s" repeatCount="indefinite"/>
+  </path>
+</svg>

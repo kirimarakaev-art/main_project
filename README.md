@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://go.78-17-98-149.sslip.io">
-    <img src="https://img.shields.io/badge/%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C%20%D1%81%D0%B0%D0%B9%D1%82-go.78--17--98--149.sslip.io-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Открыть сайт">
+    <img src="docs/open-site.svg" width="460" alt="Открыть справочник: go.78-17-98-149.sslip.io">
   </a>
 </p>
 
